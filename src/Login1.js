@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Main App component for the login form
-const App = () => {
+const Login1 = () => {
     // State hooks to manage form inputs and the message
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -146,5 +146,5 @@ const App = () => {
     );
 };
 
-export default App;
+export default Login1;
 
