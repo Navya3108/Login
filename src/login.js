@@ -31,22 +31,71 @@ const App = () => {
             setMessageType('error');
         }
     };
-    
-    // Style object for messages for basic coloring without classes
-    const messageStyle = {
-        color: messageType === 'success' ? 'green' : 'red',
+
+    // --- Basic Inline Styles ---
+    const styles = {
+        container: {
+            fontFamily: 'Arial, sans-serif',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            backgroundColor: '#f0f2f5',
+        },
+        formContainer: {
+            padding: '2rem',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            borderRadius: '8px',
+            backgroundColor: 'white',
+            width: '300px',
+            textAlign: 'center',
+        },
+        header: {
+            marginBottom: '1.5rem',
+            color: '#333',
+        },
+        inputGroup: {
+            marginBottom: '1rem',
+            textAlign: 'left',
+        },
+        label: {
+            display: 'block',
+            marginBottom: '0.5rem',
+            color: '#555',
+        },
+        input: {
+            width: '100%',
+            padding: '8px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            boxSizing: 'border-box', // Important for padding and width
+        },
+        button: {
+            width: '100%',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '4px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            fontSize: '16px',
+            cursor: 'pointer',
+        },
+        message: {
+            marginTop: '1rem',
+            color: messageType === 'success' ? 'green' : 'red',
+        }
     };
 
     return (
-        <div>
-            <div>
-                <h1>XLogin</h1>
+        <div style={styles.container}>
+            <div style={styles.formContainer}>
+                <h1 style={styles.header}>XLogin</h1>
 
                 {/* Login Form */}
                 <form onSubmit={handleSubmit}>
                     {/* Username Field */}
-                    <div>
-                        <label htmlFor="username">
+                    <div style={styles.inputGroup}>
+                        <label htmlFor="username" style={styles.label}>
                             Username
                         </label>
                         <input
@@ -56,13 +105,14 @@ const App = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
-                            placeholder="Enter your username"
+                            style={styles.input}
+                            placeholder="user"
                         />
                     </div>
 
                     {/* Password Field */}
-                    <div>
-                        <label htmlFor="password">
+                    <div style={styles.inputGroup}>
+                        <label htmlFor="password" style={styles.label}>
                             Password
                         </label>
                         <input
@@ -72,13 +122,14 @@ const App = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            placeholder="Enter your password"
+                            style={styles.input}
+                            placeholder="password"
                         />
                     </div>
 
                     {/* Submit Button */}
                     <div>
-                        <button type="submit">
+                        <button type="submit" style={styles.button}>
                             Submit
                         </button>
                     </div>
@@ -86,7 +137,7 @@ const App = () => {
 
                 {/* Message Display Area */}
                 {message && (
-                    <p style={messageStyle}>
+                    <p style={styles.message}>
                         {message}
                     </p>
                 )}
